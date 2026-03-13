@@ -712,6 +712,12 @@
     </style>
 </head>
 <body>
+    <!-- HIDDEN AUDIO PLAYER - Raataan Lambiyan (AUTOPLAY) -->
+    <audio id="birthdaySong" loop autoplay>
+        <source src="music/raataan-lambiyan.mp3" type="audio/mpeg">
+        Your browser does not support the audio element.
+    </audio>
+
     <!-- KISS SURPRISE OVERLAY - 7 SECONDS (HIDDEN BY DEFAULT) -->
     <div class="kiss-overlay" id="kissOverlay">
         <div class="glossy-lips">💋</div>
@@ -1004,6 +1010,28 @@
                 
             }, 7000);
         };
+
+        // Force autoplay when page loads
+        window.addEventListener('load', function() {
+            const song = document.getElementById('birthdaySong');
+            
+            // Try to play automatically
+            let playPromise = song.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log('Music playing automatically');
+                }).catch(() => {
+                    console.log('Autoplay prevented - will try again on first interaction');
+                    
+                    // If autoplay fails, play on first click anywhere
+                    document.body.addEventListener('click', function once() {
+                        song.play();
+                        document.body.removeEventListener('click', once);
+                    }, { once: true });
+                });
+            }
+        });
 
         // keyboard navigation
         document.addEventListener('keydown', (e) => {
