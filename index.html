@@ -709,18 +709,10 @@
                 font-size: 0.8rem;
             }
         }
-
-        /* hidden autoplay trigger */
-        #autoplay-trigger {
-            display: none;
-        }
     </style>
 </head>
 <body>
-    <!-- HIDDEN AUTOPLAY TRIGGER - This ensures music plays immediately -->
-    <div id="autoplay-trigger"></div>
-
-    <!-- AUDIO PLAYER - Raataan Lambiyan (FORCED AUTOPLAY) -->
+    <!-- HIDDEN AUDIO PLAYER - Raataan Lambiyan (AUTOPLAY) -->
     <audio id="birthdaySong" loop autoplay>
         <source src="music/raataan-lambiyan.mp3" type="audio/mpeg">
         Your browser does not support the audio element.
@@ -1019,28 +1011,26 @@
             }, 7000);
         };
 
-        // FORCE AUTOPLAY - Multiple attempts to ensure music plays
+        // Force autoplay when page loads
         window.addEventListener('load', function() {
             const song = document.getElementById('birthdaySong');
             
-            // Try to play immediately
-            song.play().catch(() => {
-                console.log('First autoplay attempt failed, trying again...');
-                
-                // Try again after a tiny delay
-                setTimeout(() => {
-                    song.play().catch(() => {
-                        console.log('Second attempt failed, one more try...');
-                        
-                        // Last attempt
-                        setTimeout(() => {
-                            song.play().catch(() => {
-                                console.log('All autoplay attempts failed. Browser blocking autoplay.');
-                            });
-                        }, 500);
-                    });
-                }, 200);
-            });
+            // Try to play automatically
+            let playPromise = song.play();
+            
+            if (playPromise !== undefined) {
+                playPromise.then(() => {
+                    console.log('Music playing automatically');
+                }).catch(() => {
+                    console.log('Autoplay prevented - will try again on first interaction');
+                    
+                    // If autoplay fails, play on first click anywhere
+                    document.body.addEventListener('click', function once() {
+                        song.play();
+                        document.body.removeEventListener('click', once);
+                    }, { once: true });
+                });
+            }
         });
 
         // keyboard navigation
