@@ -55,7 +55,7 @@
             100% { transform: translateY(-20vh) rotate(360deg); opacity: 0; }
         }
 
-        /* KISS SURPRISE OVERLAY - 7 SECONDS (HIDDEN BY DEFAULT) */
+        /* KISS SURPRISE OVERLAY - 7 SECONDS */
         .kiss-overlay {
             position: fixed;
             top: 0;
@@ -546,91 +546,288 @@
             color: white;
         }
 
-        /* reasons */
-        .reasons-flex {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
-            gap: 1rem;
+        /* ===== REASONS SECTION ===== */
+        .reasons-heading {
+            text-align: center;
+            margin-bottom: 2rem;
         }
 
-        .reason-block {
-            background: rgba(45, 15, 26, 0.6);
-            backdrop-filter: blur(8px);
-            padding: 1.8rem 0.5rem;
-            border-radius: 50px;
-            border: 2px solid #ff69b4;
+        .reasons-heading h2 {
+            font-size: 2.5rem;
             color: #ffb6c1;
-            font-size: clamp(1rem, 3.5vw, 1.5rem);
-            text-align: center;
-            font-family: 'Comfortaa', cursive;
-        }
-
-        .reason-block i {
-            font-size: clamp(2rem, 6vw, 3.2rem);
-            color: #ff1493;
-            filter: drop-shadow(0 0 30px #ff1493);
+            text-shadow: 0 0 20px #ff1493, 2px 2px 0 #8b1e3f;
             margin-bottom: 0.5rem;
-            display: block;
         }
 
-        /* future */
-        .future-dreams {
+        .reasons-heading p {
+            color: #ffb6c1;
+            font-size: 1.2rem;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .reasons-grid-improved {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 1.2rem;
+            margin: 1.5rem 0;
+        }
+
+        .reason-card-improved {
+            background: rgba(139, 30, 63, 0.3);
+            backdrop-filter: blur(10px);
+            border: 2px solid #ff69b4;
+            border-radius: 30px;
+            padding: 1.5rem 0.5rem;
             display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 2rem 3rem;
-            margin: 3rem 0;
-        }
-
-        .dream-icon {
-            font-size: clamp(3rem, 10vw, 6rem);
-            color: #ff69b4;
-            animation: dreamFloat 3s infinite alternate;
-            filter: drop-shadow(0 0 50px #ff1493);
-        }
-
-        @keyframes dreamFloat {
-            from { transform: translateY(0) rotate(-5deg); }
-            to { transform: translateY(-30px) rotate(5deg); }
-        }
-
-        .grand-finale {
-            background: linear-gradient(145deg, #8b1e3f, #ff1493);
-            border-radius: 120px;
-            padding: 2rem 1.5rem;
+            flex-direction: column;
+            align-items: center;
             text-align: center;
-            color: white;
-            font-size: clamp(1.5rem, 5vw, 2.5rem);
-            border: 4px solid #ff69b4;
-            box-shadow: 0 0 100px #ff1493;
-            margin: 2rem 0;
-            font-family: 'Comfortaa', cursive;
+            transition: 0.3s;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            min-height: 160px;
+            width: 100%;
         }
 
-        /* SURPRISE BUTTON - ONE BUTTON FOR KISS */
-        .surprise-btn {
+        .reason-card-improved::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,105,180,0.2) 0%, transparent 70%);
+            opacity: 0;
+            transition: 0.5s;
+        }
+
+        .reason-card-improved:hover {
+            transform: translateY(-10px);
+            border-color: #ff1493;
+            box-shadow: 0 0 30px #ff69b4;
+            background: rgba(139, 30, 63, 0.5);
+        }
+
+        .reason-card-improved:hover::before {
+            opacity: 1;
+        }
+
+        .reason-icon-improved {
+            font-size: 2.5rem;
+            margin-bottom: 1rem;
+            filter: drop-shadow(0 0 15px #ff1493);
+            animation: iconFloat 3s infinite alternate;
+        }
+
+        @keyframes iconFloat {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(-8px); }
+        }
+
+        .reason-text-improved {
+            color: #ffb6c1;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: 'Comfortaa', cursive;
+            line-height: 1.4;
+            word-break: break-word;
+            padding: 0 5px;
+        }
+
+        .reason-number-improved {
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.2rem;
+            color: rgba(255,105,180,0.5);
+            font-weight: 900;
+        }
+
+        /* ===== HEART RATE MONITOR STYLES ===== */
+        .heart-rate-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 60px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #ff69b4;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .heart-rate-container::before {
+            content: '❤️';
+            position: absolute;
+            top: -20px;
+            left: -20px;
+            font-size: 8rem;
+            opacity: 0.1;
+            transform: rotate(-15deg);
+            color: #ff1493;
+        }
+
+        .heart-rate-container::after {
+            content: '💓';
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            font-size: 8rem;
+            opacity: 0.1;
+            transform: rotate(15deg);
+            color: #ff69b4;
+        }
+
+        .heart-rate-header {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 2rem;
+            position: relative;
+            z-index: 2;
+        }
+
+        .heart-rate-header h3 {
+            font-family: 'Dancing Script', cursive;
+            font-size: 2.5rem;
+            color: white;
+            text-shadow: 0 0 20px #ff1493;
+        }
+
+        .heart-rate-header i {
+            font-size: 2.5rem;
+            color: #ff1493;
+            animation: heartbeat 1s infinite;
+        }
+
+        @keyframes heartbeat {
+            0% { transform: scale(1); }
+            30% { transform: scale(1.2); }
+            50% { transform: scale(1.1); }
+            70% { transform: scale(1.3); }
+            100% { transform: scale(1); }
+        }
+
+        .heart-rate-display {
+            display: flex;
+            flex-direction: column;
+            gap: 1.5rem;
+            margin: 2rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .heart-rate-item {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 50px;
+            padding: 1rem 2rem;
+            border: 2px solid #ff69b4;
+            transition: 0.3s;
+        }
+
+        .heart-rate-item:hover {
+            background: rgba(255, 20, 147, 0.2);
+            transform: scale(1.02);
+        }
+
+        .heart-rate-label {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.3rem;
+            color: #ffb6c1;
+        }
+
+        .heart-rate-label i {
+            font-size: 1.8rem;
+            color: #ff1493;
+        }
+
+        .heart-rate-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: white;
+            text-shadow: 0 0 15px #ff1493;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .heart-rate-value i {
+            font-size: 1.8rem;
+            animation: heartbeat 1s infinite;
+        }
+
+        .heart-rate-meter {
+            margin: 2rem 0;
+            position: relative;
+            z-index: 2;
+        }
+
+        .meter-bar {
+            width: 100%;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 30px;
+            overflow: hidden;
+            border: 2px solid #ff1493;
+            margin: 1rem 0;
+        }
+
+        .meter-fill {
+            height: 100%;
+            width: 70%;
+            background: linear-gradient(90deg, #ff1493, #ff69b4);
+            border-radius: 30px;
+            transition: width 1s;
+            position: relative;
+        }
+
+        .meter-fill::after {
+            content: '❤️';
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            filter: drop-shadow(0 0 10px white);
+        }
+
+        .heart-rate-message {
+            font-size: 1.8rem;
+            color: #ffb6c1;
+            font-family: 'Dancing Script', cursive;
+            margin: 1rem 0;
+            min-height: 60px;
+        }
+
+        .check-heart-btn {
             background: linear-gradient(45deg, #ff1493, #ff69b4);
             border: none;
             padding: 1.2rem 3rem;
-            font-size: clamp(1.3rem, 4vw, 1.8rem);
-            border-radius: 80px;
+            font-size: 1.3rem;
+            border-radius: 60px;
             color: white;
             font-weight: bold;
-            box-shadow: 0 0 50px #ff1493;
             cursor: pointer;
-            transition: 0.3s;
-            margin: 2rem auto;
+            margin: 1rem auto;
             border: 2px solid white;
-            font-family: 'Comfortaa', cursive;
+            transition: 0.3s;
             display: inline-flex;
             align-items: center;
             gap: 15px;
-            width: fit-content;
+            position: relative;
+            z-index: 2;
         }
 
-        .surprise-btn:hover {
+        .check-heart-btn:hover {
             transform: scale(1.15);
-            box-shadow: 0 0 100px #ff69b4;
+            box-shadow: 0 0 50px #ff69b4;
         }
 
         /* LOVE METER STYLES */
@@ -706,6 +903,128 @@
         .check-love-btn:hover {
             transform: scale(1.1);
             box-shadow: 0 0 30px #ff69b4;
+        }
+
+        /* ===== PREMIUM SURPRISE BUTTON STYLES ===== */
+        .surprise-btn {
+            background: linear-gradient(145deg, #ff1493, #ff69b4, #ffb6c1, #ff1493);
+            background-size: 300% 300%;
+            border: none;
+            padding: 1.5rem 4rem;
+            font-size: clamp(1.5rem, 5vw, 2.2rem);
+            border-radius: 80px;
+            color: white;
+            font-weight: bold;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            box-shadow: 
+                0 0 30px #ff1493,
+                0 0 60px #ff69b4,
+                0 10px 20px rgba(0,0,0,0.5),
+                inset 0 0 20px rgba(255,255,255,0.5);
+            cursor: pointer;
+            transition: 0.5s;
+            margin: 2rem auto;
+            border: 3px solid rgba(255,255,255,0.8);
+            font-family: 'Comfortaa', cursive;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            width: fit-content;
+            position: relative;
+            overflow: hidden;
+            animation: gradientShift 3s infinite alternate;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .surprise-btn::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.3) 0%, transparent 70%);
+            opacity: 0;
+            transition: 0.5s;
+            transform: rotate(45deg);
+        }
+
+        .surprise-btn:hover {
+            transform: scale(1.2) translateY(-5px);
+            box-shadow: 
+                0 0 50px #ff1493,
+                0 0 100px #ff69b4,
+                0 15px 30px rgba(0,0,0,0.6),
+                inset 0 0 30px rgba(255,255,255,0.8);
+            border-color: gold;
+            letter-spacing: 5px;
+        }
+
+        .surprise-btn:hover::before {
+            opacity: 1;
+            animation: rotate 3s linear infinite;
+        }
+
+        @keyframes rotate {
+            from { transform: rotate(0deg); }
+            to { transform: rotate(360deg); }
+        }
+
+        .surprise-btn i {
+            font-size: 2rem;
+            animation: bounce 1s infinite;
+            filter: drop-shadow(0 0 10px gold);
+        }
+
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .surprise-btn:active {
+            transform: scale(1.1) translateY(0);
+            box-shadow: 0 0 80px white;
+        }
+
+        /* future section */
+        .future-dreams {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 2rem 3rem;
+            margin: 3rem 0;
+        }
+
+        .dream-icon {
+            font-size: clamp(3rem, 10vw, 6rem);
+            color: #ff69b4;
+            animation: dreamFloat 3s infinite alternate;
+            filter: drop-shadow(0 0 50px #ff1493);
+        }
+
+        @keyframes dreamFloat {
+            from { transform: translateY(0) rotate(-5deg); }
+            to { transform: translateY(-30px) rotate(5deg); }
+        }
+
+        .grand-finale {
+            background: linear-gradient(145deg, #8b1e3f, #ff1493);
+            border-radius: 120px;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            color: white;
+            font-size: clamp(1.5rem, 5vw, 2.5rem);
+            border: 4px solid #ff69b4;
+            box-shadow: 0 0 100px #ff1493;
+            margin: 2rem 0;
+            font-family: 'Comfortaa', cursive;
         }
 
         /* navigation */
@@ -785,6 +1104,21 @@
             }
             .love-percentage {
                 font-size: 3rem;
+            }
+            .reason-card-improved {
+                min-height: 140px;
+            }
+            .reasons-grid-improved {
+                grid-template-columns: 1fr;
+            }
+            .heart-rate-item {
+                flex-direction: column;
+                gap: 10px;
+                text-align: center;
+            }
+            .surprise-btn {
+                padding: 1rem 2rem;
+                font-size: 1.2rem;
             }
         }
     </style>
@@ -955,7 +1289,7 @@
                 </div>
             </div>
 
-            <!-- PAGE 5 - 7 BIRTHDAY WISHES + LOVE METER -->
+            <!-- PAGE 5 - 7 BIRTHDAY WISHES + LOVE METER + SURPRISE BUTTON -->
             <div class="page" id="page5">
                 <div class="content">
                     <h2>🎁 7 wishes for my bestie</h2>
@@ -982,32 +1316,123 @@
                         </button>
                     </div>
                     
-                    <!-- SURPRISE BUTTON -->
+                    <!-- PREMIUM SURPRISE BUTTON -->
                     <div style="display: flex; justify-content: center; margin-top: 30px;">
                         <button class="surprise-btn" onclick="showKissSurprise()">
-                            <i class="fas fa-gift"></i> surprise 
+                            <i class="fas fa-gift"></i> SURPRISE
                         </button>
                     </div>
                 </div>
             </div>
 
-            <!-- PAGE 6 - 7 REASONS -->
+            <!-- PAGE 6 - 7 REASONS + HEART RATE MONITOR -->
             <div class="page" id="page6">
                 <div class="content">
-                    <h2>💖 7 reasons you're the best bestfriend</h2>
-                    <div class="reasons-flex">
-                        <div class="reason-block"><i class="fas fa-heart"></i> you make me laugh</div>
-                        <div class="reason-block"><i class="fas fa-heart"></i> you never judge me</div>
-                        <div class="reason-block"><i class="fas fa-heart"></i> you're genuinely you</div>
-                        <div class="reason-block"><i class="fas fa-heart"></i> you understand me</div>
-                        <div class="reason-block"><i class="fas fa-heart"></i> your kindness</div>
-                        <div class="reason-block"><i class="fas fa-heart"></i> you're always there for me</div>
-                        <div class="reason-block"><i class="fas fa-heart"></i> your positive vibe</div>
+                    <div class="reasons-heading">
+                        <h2>💖 7 reasons you're the best bestfriend</h2>
+                        <p>every reason with love</p>
+                    </div>
+                    
+                    <div class="reasons-grid-improved">
+                        <!-- Reason 1 -->
+                        <div class="reason-card-improved">
+                            <div class="reason-number-improved">01</div>
+                            <div class="reason-icon-improved">😊</div>
+                            <div class="reason-text-improved">you make me laugh</div>
+                        </div>
+                        
+                        <!-- Reason 2 -->
+                        <div class="reason-card-improved">
+                            <div class="reason-number-improved">02</div>
+                            <div class="reason-icon-improved">🤗</div>
+                            <div class="reason-text-improved">you never judge me</div>
+                        </div>
+                        
+                        <!-- Reason 3 -->
+                        <div class="reason-card-improved">
+                            <div class="reason-number-improved">03</div>
+                            <div class="reason-icon-improved">💫</div>
+                            <div class="reason-text-improved">you're genuinely you</div>
+                        </div>
+                        
+                        <!-- Reason 4 -->
+                        <div class="reason-card-improved">
+                            <div class="reason-number-improved">04</div>
+                            <div class="reason-icon-improved">🧠</div>
+                            <div class="reason-text-improved">you understand me</div>
+                        </div>
+                        
+                        <!-- Reason 5 -->
+                        <div class="reason-card-improved">
+                            <div class="reason-number-improved">05</div>
+                            <div class="reason-icon-improved">💝</div>
+                            <div class="reason-text-improved">your kindness</div>
+                        </div>
+                        
+                        <!-- Reason 6 -->
+                        <div class="reason-card-improved">
+                            <div class="reason-number-improved">06</div>
+                            <div class="reason-icon-improved">🤝</div>
+                            <div class="reason-text-improved">you're always there for me</div>
+                        </div>
+                        
+                        <!-- Reason 7 -->
+                        <div class="reason-card-improved">
+                            <div class="reason-number-improved">07</div>
+                            <div class="reason-icon-improved">✨</div>
+                            <div class="reason-text-improved">your positive vibe</div>
+                        </div>
+                    </div>
+
+                    <!-- HEART RATE MONITOR -->
+                    <div class="heart-rate-container">
+                        <div class="heart-rate-header">
+                            <i class="fas fa-heart"></i>
+                            <h3>Heart Rate Monitor</h3>
+                            <i class="fas fa-heart"></i>
+                        </div>
+                        
+                        <div class="heart-rate-display">
+                            <div class="heart-rate-item">
+                                <span class="heart-rate-label">
+                                    <i class="fas fa-eye"></i> When I see you:
+                                </span>
+                                <span class="heart-rate-value" id="heartSee">72 <i class="fas fa-heart"></i></span>
+                            </div>
+                            
+                            <div class="heart-rate-item">
+                                <span class="heart-rate-label">
+                                    <i class="fas fa-smile"></i> When you smile:
+                                </span>
+                                <span class="heart-rate-value" id="heartSmile">72 <i class="fas fa-heart"></i></span>
+                            </div>
+                            
+                            <div class="heart-rate-item">
+                                <span class="heart-rate-label">
+                                    <i class="fas fa-clock"></i> When you're away:
+                                </span>
+                                <span class="heart-rate-value" id="heartAway">72 <i class="fas fa-heart"></i></span>
+                            </div>
+                        </div>
+                        
+                        <div class="heart-rate-meter">
+                            <div class="meter-bar">
+                                <div class="meter-fill" id="heartMeter" style="width: 40%;"></div>
+                            </div>
+                        </div>
+                        
+                        <div class="heart-rate-message" id="heartMessage">
+                            Click to see what you do to my heart 💓
+                        </div>
+                        
+                        <button class="check-heart-btn" onclick="checkHeartRate()">
+                            <i class="fas fa-heartbeat"></i> CHECK MY HEARTBEAT
+                        </button>
                     </div>
                 </div>
             </div>
 
-            <!-- PAGE 7 - FUTURE -->
+            <!-- PAGE 7 - FUTURE (FIXED) -->
             <div class="page" id="page7">
                 <div class="content">
                     <h2>🌟 bestfriends forever</h2>
@@ -1107,6 +1532,64 @@
                     btn.innerHTML = '<i class="fas fa-heart"></i> Check Love Meter';
                 }, 3000);
             }, 3000);
+        };
+
+        // HEART RATE MONITOR FUNCTION
+        window.checkHeartRate = function() {
+            const heartSee = document.getElementById('heartSee');
+            const heartSmile = document.getElementById('heartSmile');
+            const heartAway = document.getElementById('heartAway');
+            const heartMeter = document.getElementById('heartMeter');
+            const heartMessage = document.getElementById('heartMessage');
+            const btn = event.target;
+            
+            // Reset to low
+            heartSee.innerHTML = '60 <i class="fas fa-heart"></i>';
+            heartSmile.innerHTML = '60 <i class="fas fa-heart"></i>';
+            heartAway.innerHTML = '60 <i class="fas fa-heart"></i>';
+            heartMeter.style.width = '30%';
+            heartMessage.innerHTML = 'Checking your effect on my heart...';
+            
+            // Step 1 - Slight increase
+            setTimeout(() => {
+                heartSee.innerHTML = '75 <i class="fas fa-heart"></i>';
+                heartSmile.innerHTML = '80 <i class="fas fa-heart"></i>';
+                heartAway.innerHTML = '65 <i class="fas fa-heart"></i>';
+                heartMeter.style.width = '45%';
+                heartMessage.innerHTML = 'You make my heart beat faster...';
+            }, 800);
+            
+            // Step 2 - Medium increase
+            setTimeout(() => {
+                heartSee.innerHTML = '95 <i class="fas fa-heart"></i>';
+                heartSmile.innerHTML = '110 <i class="fas fa-heart"></i>';
+                heartAway.innerHTML = '55 <i class="fas fa-heart"></i>';
+                heartMeter.style.width = '60%';
+                heartMessage.innerHTML = 'Your smile is dangerous! 💓';
+            }, 1600);
+            
+            // Step 3 - High increase
+            setTimeout(() => {
+                heartSee.innerHTML = '120 <i class="fas fa-heart"></i>';
+                heartSmile.innerHTML = '150 <i class="fas fa-heart"></i>';
+                heartAway.innerHTML = '45 <i class="fas fa-heart"></i>';
+                heartMeter.style.width = '80%';
+                heartMessage.innerHTML = 'My heart races when I see you! 💗';
+            }, 2400);
+            
+            // Step 4 - Maximum
+            setTimeout(() => {
+                heartSee.innerHTML = '150 <i class="fas fa-heart"></i>';
+                heartSmile.innerHTML = '180 <i class="fas fa-heart"></i>';
+                heartAway.innerHTML = '40 <i class="fas fa-heart"></i>';
+                heartMeter.style.width = '100%';
+                heartMessage.innerHTML = '✨ YOU MAKE MY HEART EXPLODE! ✨';
+                
+                btn.innerHTML = '<i class="fas fa-heartbeat"></i> MY HEART IS YOURS ❤️';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-heartbeat"></i> CHECK MY HEARTBEAT';
+                }, 3000);
+            }, 3200);
         };
 
         // FUNCTION FOR KISS SURPRISE
