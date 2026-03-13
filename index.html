@@ -546,7 +546,7 @@
             color: white;
         }
 
-        /* reasons - UPDATED */
+        /* reasons */
         .reasons-flex {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
@@ -633,6 +633,81 @@
             box-shadow: 0 0 100px #ff69b4;
         }
 
+        /* LOVE METER STYLES */
+        .love-meter-container {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border-radius: 60px;
+            padding: 2rem;
+            margin: 2rem 0;
+            border: 2px solid #ff69b4;
+            text-align: center;
+        }
+
+        .love-meter {
+            width: 100%;
+            height: 30px;
+            background: rgba(0, 0, 0, 0.3);
+            border-radius: 30px;
+            margin: 20px 0;
+            overflow: hidden;
+            border: 2px solid #ff1493;
+        }
+
+        .love-fill {
+            height: 100%;
+            width: 0%;
+            background: linear-gradient(90deg, #ff1493, #ff69b4, #ffb6c1);
+            border-radius: 30px;
+            transition: width 2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+            position: relative;
+            box-shadow: 0 0 20px #ff1493;
+        }
+
+        .love-fill::after {
+            content: '❤️';
+            position: absolute;
+            right: 5px;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 20px;
+            filter: drop-shadow(0 0 10px white);
+        }
+
+        .love-percentage {
+            font-size: 4rem;
+            color: white;
+            text-shadow: 0 0 30px #ff1493, 0 0 60px #ff69b4;
+            font-family: 'Dancing Script', cursive;
+            transition: all 0.5s;
+        }
+
+        .love-message {
+            font-size: 1.8rem;
+            color: #ffb6c1;
+            margin-top: 1rem;
+            font-family: 'Dancing Script', cursive;
+        }
+
+        .check-love-btn {
+            background: linear-gradient(45deg, #ff1493, #ff69b4);
+            border: none;
+            padding: 1rem 2.5rem;
+            font-size: 1.3rem;
+            border-radius: 60px;
+            color: white;
+            cursor: pointer;
+            margin-top: 1.5rem;
+            border: 2px solid white;
+            transition: 0.3s;
+            font-weight: bold;
+        }
+
+        .check-love-btn:hover {
+            transform: scale(1.1);
+            box-shadow: 0 0 30px #ff69b4;
+        }
+
         /* navigation */
         .nav-dots {
             position: absolute;
@@ -708,6 +783,9 @@
             .polaroid-caption {
                 font-size: 0.8rem;
             }
+            .love-percentage {
+                font-size: 3rem;
+            }
         }
     </style>
 </head>
@@ -746,7 +824,7 @@
     <!-- main book -->
     <div class="friendship-book">
         <div class="pages-scroll" id="pagesScroll">
-            <!-- PAGE 1 - COVER with "from Kunal" removed -->
+            <!-- PAGE 1 - COVER -->
             <div class="page" id="page1">
                 <div class="content cover">
                     <i class="fas fa-heart friendship-icon"></i>
@@ -762,7 +840,7 @@
                 </div>
             </div>
 
-            <!-- PAGE 2 - OUR FRIENDSHIP STORY: 15 Sept to 12 March -->
+            <!-- PAGE 2 - OUR FRIENDSHIP STORY -->
             <div class="page" id="page2">
                 <div class="content">
                     <h2>💕 <span style="color:#ff1493;">Kunal</span> & <span style="color:#ff69b4;">Alfiya</span></h2>
@@ -800,12 +878,12 @@
                 </div>
             </div>
 
-            <!-- PAGE 3 - PHOTO GALLERY with YOUR EXACT PATH -->
+            <!-- PAGE 3 - PHOTO GALLERY -->
             <div class="page" id="page3">
                 <div class="content">
                     <h2>📸 our beautiful memories</h2>
                     
-                    <!-- SECTION 1: Polaroid Style (4 photos) -->
+                    <!-- SECTION 1: Polaroid Style -->
                     <div class="section-divider">
                         <div class="section-divider-line"></div>
                         <h3 style="margin:0 1rem;">✨ polaroid memories</h3>
@@ -813,37 +891,33 @@
                     </div>
                     
                     <div class="polaroid-grid">
-                        <!-- Polaroid 1 - First mirror selfie -->
                         <div class="polaroid" style="transform: rotate(-3deg);">
                             <div class="polaroid-image">
-                                <img src="images\photo1.jpeg" alt="First mirror selfie" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
+                                <img src="images/photo1.jpeg" alt="First mirror selfie" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
                             </div>
                             <div class="polaroid-caption">our first mirror selfie</div>
                         </div>
-                        <!-- Polaroid 2 - Hidden face with bouquet on Kunal's bday -->
                         <div class="polaroid" style="transform: rotate(2deg);">
                             <div class="polaroid-image">
-                                <img src="images\photo2.jpeg" alt="Hidden face with bouquet" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
+                                <img src="images/photo2.jpeg" alt="Hidden face with bouquet" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
                             </div>
                             <div class="polaroid-caption">you made my birthday unforgettable</div>
                         </div>
-                        <!-- Polaroid 3 - Kunal & Alfiya together -->
                         <div class="polaroid" style="transform: rotate(-1deg);">
                             <div class="polaroid-image">
-                                <img src="images\photo3.jpeg" alt="Kunal and Alfiya together" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
+                                <img src="images/photo3.jpeg" alt="Kunal and Alfiya together" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
                             </div>
                             <div class="polaroid-caption">kunal & alfiya</div>
                         </div>
-                        <!-- Polaroid 4 - Google meet teaching moment -->
                         <div class="polaroid" style="transform: rotate(3deg);">
                             <div class="polaroid-image">
-                                <img src="images\photo4.jpeg" alt="Google meet teaching" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
+                                <img src="images/photo4.jpeg" alt="Google meet teaching" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
                             </div>
                             <div class="polaroid-caption">google meet fun · teaching & laughing together</div>
                         </div>
                     </div>
                     
-                    <!-- SECTION 2: Heart Shape Frames (3 photos) -->
+                    <!-- SECTION 2: Heart Shape Frames -->
                     <div class="section-divider">
                         <div class="section-divider-line"></div>
                         <h3 style="margin:0 1rem;">💕 heart frames</h3>
@@ -851,17 +925,14 @@
                     </div>
                     
                     <div class="heart-gallery">
-                        <!-- Heart 1 - Photo 5 -->
                         <div class="heart-frame">
-                            <img src="images\photo5.jpeg" alt="Heart memory 1" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
+                            <img src="images/photo5.jpeg" alt="Heart memory 1" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
                         </div>
-                        <!-- Heart 2 - Photo 6 -->
                         <div class="heart-frame">
-                            <img src="images\photo6.jpeg" alt="Heart memory 2" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
+                            <img src="images/photo6.jpeg" alt="Heart memory 2" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
                         </div>
-                        <!-- Heart 3 - Photo 7 -->
                         <div class="heart-frame">
-                            <img src="images\photo7.jpeg" alt="Heart memory 3" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
+                            <img src="images/photo7.jpeg" alt="Heart memory 3" style="width:100%; height:100%; object-fit:cover; border-radius:15px;">
                         </div>
                     </div>
                     
@@ -869,7 +940,7 @@
                 </div>
             </div>
 
-            <!-- PAGE 4 - BESTFRIEND LETTER from Kunal to Alfiya with updated text -->
+            <!-- PAGE 4 - BESTFRIEND LETTER -->
             <div class="page" id="page4">
                 <div class="content">
                     <h2>💌 to my bestfriend</h2>
@@ -884,7 +955,7 @@
                 </div>
             </div>
 
-            <!-- PAGE 5 - 7 BIRTHDAY WISHES for Alfiya from Kunal - UPDATED -->
+            <!-- PAGE 5 - 7 BIRTHDAY WISHES + LOVE METER -->
             <div class="page" id="page5">
                 <div class="content">
                     <h2>🎁 7 wishes for my bestie</h2>
@@ -898,7 +969,20 @@
                         <div class="wish-item"><i class="fas fa-heart"></i> always stay awesome</div>
                     </div>
                     
-                    <!-- ONE SURPRISE BUTTON - JUST FOR KISS -->
+                    <!-- LOVE METER -->
+                    <div class="love-meter-container">
+                        <h3 style="color:white; font-size:2rem; margin-bottom:1rem;">❤️ Kunal's Love Meter ❤️</h3>
+                        <div class="love-meter">
+                            <div class="love-fill" id="loveFill" style="width: 0%;"></div>
+                        </div>
+                        <div class="love-percentage" id="lovePercentage">0%</div>
+                        <div class="love-message" id="loveMessage">Click to see how much Kunal loves you</div>
+                        <button class="check-love-btn" onclick="checkLove()">
+                            <i class="fas fa-heart"></i> Check Love Meter
+                        </button>
+                    </div>
+                    
+                    <!-- SURPRISE BUTTON -->
                     <div style="display: flex; justify-content: center; margin-top: 30px;">
                         <button class="surprise-btn" onclick="showKissSurprise()">
                             <i class="fas fa-gift"></i> surprise 
@@ -907,7 +991,7 @@
                 </div>
             </div>
 
-            <!-- PAGE 6 - 7 REASONS Kunal loves having Alfiya as bestfriend - UPDATED -->
+            <!-- PAGE 6 - 7 REASONS -->
             <div class="page" id="page6">
                 <div class="content">
                     <h2>💖 7 reasons you're the best bestfriend</h2>
@@ -923,7 +1007,7 @@
                 </div>
             </div>
 
-            <!-- PAGE 7 - FUTURE with Kunal & Alfiya (bestfriends forever) -->
+            <!-- PAGE 7 - FUTURE -->
             <div class="page" id="page7">
                 <div class="content">
                     <h2>🌟 bestfriends forever</h2>
@@ -981,24 +1065,64 @@
             updatePages();
         };
 
-        // FUNCTION FOR KISS SURPRISE + MESSAGE + SCROLL TO NEXT PAGE
+        // LOVE METER FUNCTION
+        window.checkLove = function() {
+            const loveFill = document.getElementById('loveFill');
+            const lovePercentage = document.getElementById('lovePercentage');
+            const loveMessage = document.getElementById('loveMessage');
+            const btn = event.target;
+            
+            loveFill.style.width = '0%';
+            lovePercentage.innerHTML = '0%';
+            loveMessage.innerHTML = 'Calculating your love...';
+            
+            setTimeout(() => {
+                loveFill.style.width = '25%';
+                lovePercentage.innerHTML = '25%';
+            }, 500);
+            
+            setTimeout(() => {
+                loveFill.style.width = '50%';
+                lovePercentage.innerHTML = '50%';
+            }, 1000);
+            
+            setTimeout(() => {
+                loveFill.style.width = '75%';
+                lovePercentage.innerHTML = '75%';
+            }, 1500);
+            
+            setTimeout(() => {
+                loveFill.style.width = '100%';
+                lovePercentage.innerHTML = '100%';
+                loveMessage.innerHTML = 'Still calculating...';
+            }, 2000);
+            
+            setTimeout(() => {
+                loveFill.style.width = '100%';
+                lovePercentage.innerHTML = '∞';
+                loveMessage.innerHTML = 'INFINITY • FOREVER • ALWAYS';
+                
+                btn.innerHTML = '<i class="fas fa-heart"></i> LOVE IS INFINITE ❤️';
+                setTimeout(() => {
+                    btn.innerHTML = '<i class="fas fa-heart"></i> Check Love Meter';
+                }, 3000);
+            }, 3000);
+        };
+
+        // FUNCTION FOR KISS SURPRISE
         window.showKissSurprise = function() {
             const kissOverlay = document.getElementById('kissOverlay');
             const kissMessageOverlay = document.getElementById('kissMessageOverlay');
             
-            // Show kiss first
             kissOverlay.style.display = 'flex';
             
-            // Hide kiss after 7 seconds and show message
             setTimeout(() => {
                 kissOverlay.style.display = 'none';
                 kissMessageOverlay.style.display = 'flex';
                 
-                // Hide message after 3 seconds and scroll to next page
                 setTimeout(() => {
                     kissMessageOverlay.style.display = 'none';
                     
-                    // Scroll to next page
                     if (currentPage < total - 1) {
                         currentPage++;
                     } else {
@@ -1015,16 +1139,14 @@
         window.addEventListener('load', function() {
             const song = document.getElementById('birthdaySong');
             
-            // Try to play automatically
             let playPromise = song.play();
             
             if (playPromise !== undefined) {
                 playPromise.then(() => {
                     console.log('Music playing automatically');
                 }).catch(() => {
-                    console.log('Autoplay prevented - will try again on first interaction');
+                    console.log('Autoplay prevented');
                     
-                    // If autoplay fails, play on first click anywhere
                     document.body.addEventListener('click', function once() {
                         song.play();
                         document.body.removeEventListener('click', once);
